@@ -10,6 +10,7 @@ $config = [
     'defaultRoute' => 'home/index',
     'language' => 'ru',
     'name' => 'Grocery Store a Ecommerce Online Shopping',
+    'layout' => 'grocery',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
