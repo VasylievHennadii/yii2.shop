@@ -30,8 +30,11 @@ class MenuWidget extends Widget
     {
         $this->data = Category::find()->select('id, parent_id, title')->indexBy('id')->asArray()->all();
         $this->tree = $this->getTree();
-        debug($this->tree);
-        return $this->tpl;
+        $this->menuHtml = '<ul class="' . $this->ul_class . '">';
+        $this->menuHtml .= $this->getMenuHtml($this->tree);
+        $this->menuHtml .= '</ul>';
+        
+        return $this->menuHtml;
     }
 
     protected function getTree(){
@@ -45,6 +48,18 @@ class MenuWidget extends Widget
         return $tree;
     }
 
+    protected function getMenuHtml($tree){
+        $str = '';
+        foreach ($tree as $category) {
+            $str .= $this->catToTemplate($category);
+        }
+        return $str;
+    }
 
+    protected function catToTemplate($category){
+        ob_start();
+        include __DIR__ . '/menu_tpl/' . $this->tpl;
+        return ob_get_clean();
+    }
 
 }
