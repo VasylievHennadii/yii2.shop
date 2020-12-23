@@ -2,6 +2,7 @@
 
 namespace app\components;
 
+use app\models\Category;
 use yii\base\Widget;
 
 class MenuWidget extends Widget
@@ -27,8 +28,23 @@ class MenuWidget extends Widget
 
     public function run()
     {
+        $this->data = Category::find()->select('id, parent_id, title')->indexBy('id')->asArray()->all();
+        $this->tree = $this->getTree();
+        debug($this->tree);
         return $this->tpl;
     }
+
+    protected function getTree(){
+        $tree = [];
+        foreach ($this->data as $id=>&$node) {
+            if (!$node['parent_id'])
+                $tree[$id] = &$node;
+            else
+                $this->data[$node['parent_id']]['children'][$node['id']] = &$node;
+        }
+        return $tree;
+    }
+
 
 
 }
