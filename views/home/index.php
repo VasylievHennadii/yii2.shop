@@ -67,21 +67,33 @@
         <div class="clearfix"> </div>
 </div>
 <!-- top-brands -->
+<?php if(!empty($offers)): ?>
 <div class="top-brands">
     <div class="container">
         <h3>Hot Offers</h3>
         <div class="agile_top_brands_grids">
+            <?php foreach($offers as $offer): ?>
             <div class="col-md-3 top_brand_left">
                 <div class="hover14 column">
                     <div class="agile_top_brand_left_grid">
-                        <div class="tag"><img src="images/tag.png" alt=" " class="img-responsive" /></div>
+                        <div class="agile_top_brand_left_grid_pos">
+                                <?= \yii\helpers\Html::img('@web/images/offer.png', ['alt' => 'offer', 'class' => 'img-responsive']) ?>
+                        </div>
+
                         <div class="agile_top_brand_left_grid1">
                             <figure>
                                 <div class="snipcart-item block" >
                                     <div class="snipcart-thumb">
-                                        <a href="single.html"><img title=" " alt=" " src="images/1.png" /></a>		
-                                        <p>fortune sunflower oil</p>
-                                        <h4>$7.99 <span>$10.00</span></h4>
+                                        <a href="<?= \yii\helpers\Url::to(['product/view', 'id' => $offer->id])?>">
+                                            <?= \yii\helpers\Html::img("@web/products/{$offer->img}", ['alt' => $offer->title]) ?>
+                                        </a>
+                                        <p><?= $offer->title ?></p>
+                                        <h4>
+                                            $<?= $offer->price ?>
+                                            <?php if((float)$offer->old_price): ?>
+                                            <span>$<?= $offer->old_price ?></span>
+                                            <?php endif; ?>
+                                        </h4>
                                     </div>
                                     <div class="snipcart-details top_brand_home_details">
                                         <form action="checkout.html" method="post">
@@ -107,115 +119,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 top_brand_left">
-                <div class="hover14 column">
-                    <div class="agile_top_brand_left_grid">
-                        <div class="agile_top_brand_left_grid1">
-                            <figure>
-                                <div class="snipcart-item block" >
-                                    <div class="snipcart-thumb">
-                                        <a href="single.html"><img title=" " alt=" " src="images/3.png" /></a>		
-                                        <p>basmati rise (5 Kg)</p>
-                                        <h4>$11.99 <span>$15.00</span></h4>
-                                    </div>
-                                    <div class="snipcart-details top_brand_home_details">
-                                        <form action="#" method="post">
-                                            <fieldset>
-                                                <input type="hidden" name="cmd" value="_cart" />
-                                                <input type="hidden" name="add" value="1" />
-                                                <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value="basmati rise" />
-                                                <input type="hidden" name="amount" value="11.99" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
-                                                <input type="hidden" name="currency_code" value="USD" />
-                                                <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="Add to cart" class="button" />
-                                            </fieldset>
-                                        </form>
-                                    </div>
-                                </div>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 top_brand_left">
-                <div class="hover14 column">
-                    <div class="agile_top_brand_left_grid">
-                        <div class="agile_top_brand_left_grid_pos">
-                            <img src="images/offer.png" alt=" " class="img-responsive" />
-                        </div>
-                        <div class="agile_top_brand_left_grid1">
-                            <figure>
-                                <div class="snipcart-item block">
-                                    <div class="snipcart-thumb">
-                                        <a href="single.html"><img src="images/2.png" alt=" " class="img-responsive" /></a>
-                                        <p>Pepsi soft drink (2 Ltr)</p>
-                                        <h4>$8.00 <span>$10.00</span></h4>
-                                    </div>
-                                    <div class="snipcart-details top_brand_home_details">
-                                        <form action="#" method="post">
-                                            <fieldset>
-                                                <input type="hidden" name="cmd" value="_cart" />
-                                                <input type="hidden" name="add" value="1" />
-                                                <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value="Pepsi soft drink" />
-                                                <input type="hidden" name="amount" value="8.00" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
-                                                <input type="hidden" name="currency_code" value="USD" />
-                                                <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="Add to cart" class="button" />
-                                            </fieldset>
-                                        </form>
-                                    </div>
-                                </div>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 top_brand_left">
-                <div class="hover14 column">
-                    <div class="agile_top_brand_left_grid">
-                        <div class="agile_top_brand_left_grid_pos">
-                            <img src="images/offer.png" alt=" " class="img-responsive" />
-                        </div>
-                        <div class="agile_top_brand_left_grid1">
-                            <figure>
-                                <div class="snipcart-item block">
-                                    <div class="snipcart-thumb">
-                                        <a href="single.html"><img src="images/4.png" alt=" " class="img-responsive" /></a>
-                                        <p>dogs food (4 Kg)</p>
-                                        <h4>$9.00 <span>$11.00</span></h4>
-                                    </div>
-                                    <div class="snipcart-details top_brand_home_details">
-                                        <form action="#" method="post">
-                                            <fieldset>
-                                                <input type="hidden" name="cmd" value="_cart" />
-                                                <input type="hidden" name="add" value="1" />
-                                                <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value="dogs food" />
-                                                <input type="hidden" name="amount" value="9.00" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
-                                                <input type="hidden" name="currency_code" value="USD" />
-                                                <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="Add to cart" class="button" />
-                                            </fieldset>
-                                        </form>
-                                    </div>
-                                </div>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach;?>
             <div class="clearfix"> </div>
         </div>
     </div>
 </div>
+<?php endif;?>
 <!-- //top-brands -->
 <!-- fresh-vegetables -->
 <div class="fresh-vegetables">

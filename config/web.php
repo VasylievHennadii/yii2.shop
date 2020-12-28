@@ -54,6 +54,8 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
+                'category/<id:\d+>' => 'category/view', //формат ссылки 'category/view?id=1' меняем на 'category/1'
+                'product/<id:\d+>' => 'product/view', //формат ссылки 'product/view?id=1' меняем на 'product/1'
             ],
         ],        
     ],

@@ -48,6 +48,8 @@ web/images/*
 # !web/images/products
 
 web/js/*
-!web/js/jquery.accordion.js
-!web/js/jquery.cookie.js
+# !web/js/jquery.accordion.js
+# !web/js/jquery.cookie.js
 !web/js/main.js
+
+web/products/*
