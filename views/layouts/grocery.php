@@ -16,11 +16,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
-<meta charset="<?= Yii::$app->charset ?>">
-<?php $this->registerCsrfMetaTags() ?>
-<title><?= Html::encode($this->title) ?></title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<?php $this->head() ?>
+	<base href="/">
+	<meta charset="<?= Yii::$app->charset ?>">
+	<?php $this->registerCsrfMetaTags() ?>
+	<title><?= Html::encode($this->title) ?></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php $this->head() ?>
 </head>
 	
 <body>
@@ -90,9 +91,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 <!-- //header -->
 
-<!-- banner -->
-<div class="banner">
-    <?= $this->render('//layouts/inc/sidebar') ?>
     <?= $content?>
 
 <!-- newsletter -->

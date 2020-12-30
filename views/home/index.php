@@ -1,4 +1,6 @@
-
+<!-- banner -->
+<div class="banner">
+    <?= $this->render('//layouts/inc/sidebar') ?>
     <div class="w3l_banner_nav_right">
         <section class="slider">
             <div class="flexslider">
