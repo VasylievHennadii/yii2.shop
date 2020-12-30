@@ -2,8 +2,8 @@
 <div class="products-breadcrumb">
     <div class="container">
         <ul>
-            <li><i class="fa fa-home" aria-hidden="true"></i><a href="index.html">Home</a><span>|</span></li>
-            <li>Branded Foods</li>
+            <li><i class="fa fa-home" aria-hidden="true"></i><a href="<?= \yii\helpers\Url::home() ?>">Home</a><span>|</span></li>
+            <li><?= $category->title ?></li>
         </ul>
     </div>
 </div>
