@@ -57,6 +57,7 @@ $config = [
                 'category/<id:\d+>/page/<page:\d+>' => 'category/view', //формат ссылки 'category/1?page=2' меняем на 'category/1/page/2' для ПАГИНАЦИИ
                 'category/<id:\d+>' => 'category/view', //формат ссылки 'category/view?id=1' меняем на 'category/1'
                 'product/<id:\d+>' => 'product/view', //формат ссылки 'product/view?id=1' меняем на 'product/1'
+                'search' => 'category/search', //формат ссылки 'category/search?q=soup' меняем на 'search?q=soup'
             ],
         ],        
     ],
