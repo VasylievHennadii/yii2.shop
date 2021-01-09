@@ -27,6 +27,13 @@ jQuery(document).ready(function ($) {
     );
 
     $().UItoTop({ easingType: 'easeOutQuart' });
+    
+     $('#example').okzoom({
+        width: 150,
+        height: 150,
+        border: "1px solid black",
+        shadow: "0 0 5px #000"
+    });
 
 });
 
