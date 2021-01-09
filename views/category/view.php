@@ -70,7 +70,7 @@
             <div class="w3ls_w3l_banner_nav_right_grid1">
                 <?php foreach($products as $product): ?>
                 <div class="col-md-3 w3ls_w3l_banner_left">
-                    <div class="hover14 column">
+                    <div class="hover14 column" style="margin-bottom: 10px;">
                         <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
                             <?php if($product->is_offer): ?>
                             <div class="agile_top_brand_left_grid_pos">
@@ -116,6 +116,13 @@
                 </div>
                 <?php endforeach; ?>
                 <div class="clearfix"> </div>
+                <div class="col-md-12">
+                    <?= \yii\widgets\LinkPager::widget([
+                        'pagination' => $pages,
+                        'nextPageCssClass' => 'next test',
+                        // 'maxButtonCount' => 3,
+                    ]) ?>
+                </div>
             </div>
             <?php else: ?>
                 <div class="w3ls_w3l_banner_nav_right_grid1">
