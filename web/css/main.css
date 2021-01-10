@@ -1,0 +1,17 @@
+/* --мои стили -- my style-- */
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+	background-color: #fa1818;
+	border-color: #fa1818;
+}
+.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus, .pagination > li > a, .pagination > li > span{
+	color: #fa1818;
+}
+
+img{
+	max-width: 100%;
+	height: auto;
+}
+.snipcart-thumb img{
+	max-height: 140px;
+}
+/* --End my style-- */
