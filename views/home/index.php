@@ -98,22 +98,7 @@
                                         </h4>
                                     </div>
                                     <div class="snipcart-details top_brand_home_details">
-                                        <form action="checkout.html" method="post">
-                                            <fieldset>
-                                                <input type="hidden" name="cmd" value="_cart" />
-                                                <input type="hidden" name="add" value="1" />
-                                                <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value="Fortune Sunflower Oil" />
-                                                <input type="hidden" name="amount" value="7.99" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
-                                                <input type="hidden" name="currency_code" value="USD" />
-                                                <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="Add to cart" class="button" />
-                                            </fieldset>
-                                                
-                                        </form>
-                                
+                                        <a href="<?= \yii\helpers\Url::to(['cart/add', 'id' => $offer->id]) ?>" data-id="<?= $offer->id ?>" class="button add-to-cart">Add to cart</a>
                                     </div>
                                 </div>
                             </figure>

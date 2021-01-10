@@ -14,4 +14,35 @@ img{
 .snipcart-thumb img{
 	max-height: 140px;
 }
+
+.product_list_header button.button {
+	color: #fff;
+	font-size: 14px;
+	outline: none;
+	text-transform: capitalize;
+	padding: .5em 2.5em .5em 1em;
+	border: 1px solid #84c639;
+	margin: .35em 0 0;
+	background: url(../images/cart.png) no-repeat 116px 9px;
+	width: 144px;
+}
+.snipcart-details a.button {
+	font-size: 14px;
+	color: #fff;
+	background: #FA1818;
+	text-decoration: none;
+	position: relative;
+	border: none;
+	border-radius: 0;
+	width: 100%;
+	display: block;
+	text-transform: uppercase;
+	padding: .5em 0;
+	outline: none;
+}
+.agile_top_brand_left_grid:hover .snipcart-details a.button, .snipcart-details a.button:hover {
+	background: #84C639;
+}
+
+
 /* --End my style-- */
