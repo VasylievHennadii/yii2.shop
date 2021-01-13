@@ -47,7 +47,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: #000;">&times;</span></button>
 							<h4 class="modal-title" id="myModalLabel">Корзина</h4>
 						</div>
 						<div class="modal-body">
