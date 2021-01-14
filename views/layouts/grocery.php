@@ -38,21 +38,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</form>
 		</div>
 		<div class="product_list_header">  
-			<button type="button" class="button" data-toggle="modal" data-target="#modal-cart">
-				$0
-			</button>
+                    <button onclick="getCart()" type="button" class="button" data-toggle="modal" data-target="#modal-cart">
+                        <span class="cart-sum">
+                            $<?= $_SESSION['cart.sum'] ?? '0'; ?>                            
+                        </span>
+                    </button>
 
 			<!-- Modal -->
 			<div class="modal fade" id="modal-cart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: #000;">&times;</span></button>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							<h4 class="modal-title" id="myModalLabel">Корзина</h4>
 						</div>
-						<div class="modal-body">
-							...
-						</div>
+						<div class="modal-body"></div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
 							<a href="<?= \yii\helpers\Url::to(['cart/view']) ?>" class="btn btn-success">Оформить заказ</a>

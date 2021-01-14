@@ -44,5 +44,17 @@ img{
 	background: #84C639;
 }
 
+.product_list_header button.close span{
+	color: #000;
+	top: 0;
+}
+.product_list_header span.del-item{
+	color: #FA1818;
+	top: 0;
+}
+#modal-cart img{
+	max-height: 40px;
+}
+
 
 /* --End my style-- */
