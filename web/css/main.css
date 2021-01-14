@@ -51,6 +51,7 @@ img{
 .product_list_header span.del-item{
 	color: #FA1818;
 	top: 0;
+        cursor: pointer;
 }
 #modal-cart img{
 	max-height: 40px;
