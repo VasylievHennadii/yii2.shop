@@ -60,7 +60,10 @@ class CartController extends AppController
         $session->open();        
         $cart = new Cart();
         $cart->recalc($id);
-        return $this->renderPartial('cart-modal', compact('session'));
+        if(\Yii::$app->request->isAjax){
+            return $this->renderPartial('cart-modal', compact('session'));
+        }
+        return $this->redirect(\Yii::$app->request->referrer);
     }
     
     /**
@@ -80,10 +83,11 @@ class CartController extends AppController
      * метод для оформления заказа
      * @return type
      */
-    public function actionView()
+    public function actionCheckout()
     {
         $this->setMeta("Оформление заказа :: " . \Yii::$app->name);
-        return $this->render('view');
+        $session = \Yii::$app->session;
+        return $this->render('checkout', compact('session'));
     }
     
 }

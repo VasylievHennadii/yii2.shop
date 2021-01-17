@@ -16,99 +16,65 @@
         <!-- about -->
         <div class="privacy about">
             <h3>Chec<span>kout</span></h3>
-
+<?php if(!empty($session['cart'])): ?>
             <div class="checkout-right">
-                <h4>Your shopping cart contains: <span>3 Products</span></h4>
-                <table class="timetable_sub">
-                    <thead>
-                    <tr>
-                        <th>SL No.</th>
-                        <th>Product</th>
-                        <th>Quality</th>
-                        <th>Product Name</th>
+                <h4>Your shopping cart contains: <span><?= $session['cart.qty'] ?> Product(s)</span></h4>
+                <div class="cart-table">
+                    <div class="overlay">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+                    <table class="timetable_sub">
+                        <thead>
+                            <tr>
+                                <th>SL No.</th>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1; foreach ($session['cart'] as $id => $item): ?>
+                            <tr>
+                                <td class="invert"><?= $i; ?></td>
+                                <td class="invert-image">
+                                    <a href="<?= yii\helpers\Url::to(['product/view', 'id' => $id]) ?>">
+                                        <?= \yii\helpers\Html::img("@web/products/{$item['img']}", ['alt' => $item['title']]) ?>
+                                    </a>
+                                </td>
+                                <td class="invert">
+                                    <div class="quantity">
+                                        <div class="quantity-select">
+                                            <div class="entry value-minus">&nbsp;</div>
+                                            <div class="entry value"><span><?= $item['qty']?></span></div>
+                                            <div class="entry value-plus active">&nbsp;</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="invert"><?= $item['title']?></td>
 
-                        <th>Price</th>
-                        <th>Remove</th>
-                    </tr>
-                    </thead>
-                    <tbody><tr class="rem1">
-                        <td class="invert">1</td>
-                        <td class="invert-image"><a href="single.html"><img src="images/1.png" alt=" " class="img-responsive"></a></td>
-                        <td class="invert">
-                            <div class="quantity">
-                                <div class="quantity-select">
-                                    <div class="entry value-minus">&nbsp;</div>
-                                    <div class="entry value"><span>1</span></div>
-                                    <div class="entry value-plus active">&nbsp;</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="invert">Fortune Sunflower Oil</td>
+                                <td class="invert">$<?= $item['price']?></td>
+                                <td class="invert">
+                                    <div class="rem">
+                                        <a class="close1" href="<?= yii\helpers\Url::to(['cart/del-item', 'id' => $id]) ?>"> </a>
+                                    </div>
 
-                        <td class="invert">$290.00</td>
-                        <td class="invert">
-                            <div class="rem">
-                                <div class="close1"> </div>
-                            </div>
-
-                        </td>
-                    </tr>
-                    <tr class="rem2">
-                        <td class="invert">2</td>
-                        <td class="invert-image"><a href="single.html"><img src="images/3.png" alt=" " class="img-responsive"></a></td>
-                        <td class="invert">
-                            <div class="quantity">
-                                <div class="quantity-select">
-                                    <div class="entry value-minus">&nbsp;</div>
-                                    <div class="entry value"><span>1</span></div>
-                                    <div class="entry value-plus active">&nbsp;</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="invert">Basmati Rise (5 Kg)</td>
-
-                        <td class="invert">$250.00</td>
-                        <td class="invert">
-                            <div class="rem">
-                                <div class="close2"> </div>
-                            </div>
-
-                        </td>
-                    </tr>
-                    <tr class="rem3">
-                        <td class="invert">3</td>
-                        <td class="invert-image"><a href="single.html"><img src="images/2.png" alt=" " class="img-responsive"></a></td>
-                        <td class="invert">
-                            <div class="quantity">
-                                <div class="quantity-select">
-                                    <div class="entry value-minus">&nbsp;</div>
-                                    <div class="entry value"><span>1</span></div>
-                                    <div class="entry value-plus active">&nbsp;</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="invert">Pepsi Soft Drink (2 Ltr)</td>
-
-                        <td class="invert">$15.00</td>
-                        <td class="invert">
-                            <div class="rem">
-                                <div class="close3"> </div>
-                            </div>
-
-                        </td>
-                    </tr>
-
-                    </tbody></table>
+                                </td>
+                            </tr>   
+                            <?php $i++; endforeach;?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="checkout-left">
                 <div class="col-md-4 checkout-left-basket">
                     <h4>Continue to basket</h4>
                     <ul>
-                        <li>Product1 <i>-</i> <span>$15.00 </span></li>
-                        <li>Product2 <i>-</i> <span>$25.00 </span></li>
-                        <li>Product3 <i>-</i> <span>$29.00 </span></li>
-                        <li>Total Service Charges <i>-</i> <span>$15.00</span></li>
-                        <li>Total <i>-</i> <span>$84.00</span></li>
+                        <?php foreach ($session['cart'] as $item): ?>
+                        <li><?= $item['title'] ?> <i>-</i> <span>$<?= $item['price'] * $item['qty']?> </span></li>  
+                        <?php endforeach;?>
+                        <li>Total <i>-</i> <span>$<?= $session['cart.sum'] ?></span></li>
                     </ul>
                 </div>
                 <div class="col-md-8 address_form_agile">
@@ -162,7 +128,9 @@
                 <div class="clearfix"> </div>
 
             </div>
-
+<?php else: ?>
+    <h3>Корзина пуста</h3>
+<?php endif;?>
         </div>
         <!-- //about -->
     </div>
