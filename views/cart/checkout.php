@@ -46,9 +46,9 @@
                                 <td class="invert">
                                     <div class="quantity">
                                         <div class="quantity-select">
-                                            <div class="entry value-minus">&nbsp;</div>
+                                            <div class="entry value-minus" data-id="<?= $id ?>" data-qty="-1">&nbsp;</div>
                                             <div class="entry value"><span><?= $item['qty']?></span></div>
-                                            <div class="entry value-plus active">&nbsp;</div>
+                                            <div class="entry value-plus active" data-id="<?= $id ?>" data-qty="1">&nbsp;</div>
                                         </div>
                                     </div>
                                 </td>

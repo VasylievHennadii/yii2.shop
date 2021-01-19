@@ -14,6 +14,24 @@ class CartController extends AppController
 {
     
     /**
+     * метод добавления/удаления продуктов в cart из checkout
+     */
+    public function actionChangeCart()
+    {
+        $id = \Yii::$app->request->get('id');
+        $qty = \Yii::$app->request->get('qty');
+        $product = Product::findOne($id);
+        if(empty($product)){
+            return false;
+        }
+        $session = \Yii::$app->session;
+        $session->open();        
+        $cart = new Cart();
+        $cart->addToCart($product, $qty);
+        return $this->renderPartial('cart-modal', compact('session'));
+    }
+
+        /**
      * метод добавления товара в корзину
      * @param type $id
      */
@@ -38,6 +56,7 @@ class CartController extends AppController
 //        если не аяксом, возвращаем пользователя на ту же страницу, с которой пришел
         return $this->redirect(\Yii::$app->request->referrer);        
     }
+    
     
     /**
      * метод вывода корзины
