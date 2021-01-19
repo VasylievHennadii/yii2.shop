@@ -31,7 +31,7 @@ class CartController extends AppController
         return $this->renderPartial('cart-modal', compact('session'));
     }
 
-        /**
+    /**
      * метод добавления товара в корзину
      * @param type $id
      */

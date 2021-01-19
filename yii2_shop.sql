@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 10 2021 г., 01:17
+-- Время создания: Янв 20 2021 г., 00:40
 -- Версия сервера: 10.3.13-MariaDB-log
 -- Версия PHP: 7.1.32
 
@@ -60,6 +60,42 @@ INSERT INTO `category` (`id`, `parent_id`, `title`, `description`, `keywords`) V
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `qty` tinyint(3) UNSIGNED NOT NULL,
+  `total` decimal(6,2) NOT NULL DEFAULT 0.00,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `note` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `order_product`
+--
+
+CREATE TABLE `order_product` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `order_id` int(10) UNSIGNED NOT NULL,
+  `product_id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `price` decimal(6,2) NOT NULL DEFAULT 0.00,
+  `qty` tinyint(4) NOT NULL,
+  `total` decimal(6,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `product`
 --
 
@@ -105,6 +141,18 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `order_product`
+--
+ALTER TABLE `order_product`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `product`
 --
 ALTER TABLE `product`
@@ -119,6 +167,18 @@ ALTER TABLE `product`
 --
 ALTER TABLE `category`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT для таблицы `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `order_product`
+--
+ALTER TABLE `order_product`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `product`
