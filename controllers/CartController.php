@@ -3,7 +3,10 @@
 namespace app\controllers;
 
 use app\models\Cart;
+use app\models\Order;
+use app\models\OrderProduct;
 use app\models\Product;
+
 
 /**
  * Description of CartController
@@ -106,7 +109,33 @@ class CartController extends AppController
     {
         $this->setMeta("Оформление заказа :: " . \Yii::$app->name);
         $session = \Yii::$app->session;
-        return $this->render('checkout', compact('session'));
+        
+        $order = new Order();
+        $order_product = new OrderProduct();
+        if($order->load(\Yii::$app->request->post())){
+            /*добавление данных в дополнит поля формы*/
+            $order->qty = $session['cart.qty'];
+            $order->total = $session['cart.sum'];
+            
+            /*объект для работы с транзакциями*/
+            $transaction = \Yii::$app->getDb()->beginTransaction();
+            
+            /* сохраняем данные для модели Order. Если данные
+              не сохранены - откатываем транзакцию. Else - выполняем транзакцию */
+            if(!$order->save() || !$order_product->saveOrderProducts($session['cart'], $order->id)){
+                \Yii::$app->session->setFlash('error', 'Ошибка оформления заказа');
+                $transaction->rollBack();
+            } else {
+                $transaction->commit();
+                \Yii::$app->session->setFlash('success', 'Заказ принят. Ожидайте звонка менеджера');
+                $session->remove('cart');
+                $session->remove('cart.qty');
+                $session->remove('cart.sum');
+                return $this->refresh();
+            }            
+        }
+        
+        return $this->render('checkout', compact('session', 'order', 'order_product'));
     }
     
 }

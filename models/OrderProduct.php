@@ -38,5 +38,26 @@ class OrderProduct extends ActiveRecord
         ];
     }
 
+    /**
+     * метод заполняет атрибуты модели OrderProduct
+     * @param type $products
+     * @param type $order_id
+     */
+    public function saveOrderProducts($products, $order_id){
+        foreach ($products as $id => $product){
+            $this->id = null;
+            $this->isNewRecord = true; //указатель для save(), что сохраняем в новую запись в БД
+            $this->order_id = $order_id;
+            $this->product_id = $id;
+            $this->title = $product['title'];
+            $this->price = $product['price'];
+            $this->qty = $product['qty'];
+            $this->total = $product['qty'] * $product['price'];
+            if(!$this->save()){
+                return false;
+            }
+        }
+        return true;
+    }
     
 }

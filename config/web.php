@@ -17,6 +17,19 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        /*настройка комплекта ресурсов*/
+        'assetManager' => [
+            'bundles' => [
+                'yii\web\JqueryAsset' => [
+                    'sourcePath' => null,   // не опубликовывать комплект
+                    'js' => [
+                        'js/jquery-1.11.1.min.js',
+                    ]
+                ],
+            ],
+        ],
+        /*настройка комплекта ресурсов*/
+        
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'BIdAvmB3CmxosOUA105F4fFQXPPYuGfb',
