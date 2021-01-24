@@ -128,6 +128,29 @@ class CartController extends AppController
             } else {
                 $transaction->commit();
                 \Yii::$app->session->setFlash('success', 'Заказ принят. Ожидайте звонка менеджера');
+                
+                /*отправка почты*/
+                try{
+                    \Yii::$app->mailer->compose('order', ['session' => $session])
+                        ->setFrom([\Yii::$app->params['senderEmail'] => \Yii::$app->params['senderName']])
+                        ->setTo([$order->email, 'petpolimer@gmail.com'])
+                        ->setSubject("{$order->name}, Ваш Заказ №{$order->id} принят")
+                        ->send();
+//                \Yii::$app->mailer->compose('order', ['session' => $session])
+//                        ->setFrom([\Yii::$app->params['senderEmail'] => \Yii::$app->params['senderName']])
+//                        ->setTo('petpolimer@gmail.com')
+//                        ->setSubject("{$order->name}, Ваш Заказ №{$order->id} принят")
+//                        ->send();
+                \Yii::$app->mailer->compose('order-admin', ['session' => $session])
+                        ->setFrom([\Yii::$app->params['senderEmail'] => \Yii::$app->params['senderName']])
+                        ->setTo(\Yii::$app->params['adminEmail'])
+                        ->setSubject("Заказ №{$order->id}")
+                        ->send();
+                } catch (\Swift_TransportException $e) {
+                    //debug($e); die;
+                }                
+                /*отправка почты*/
+                
                 $session->remove('cart');
                 $session->remove('cart.qty');
                 $session->remove('cart.sum');
