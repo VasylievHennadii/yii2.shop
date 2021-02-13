@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 20 2021 г., 00:40
+-- Время создания: Фев 13 2021 г., 20:11
 -- Версия сервера: 10.3.13-MariaDB-log
 -- Версия PHP: 7.1.32
 
@@ -77,6 +77,18 @@ CREATE TABLE `orders` (
   `note` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Дамп данных таблицы `orders`
+--
+
+INSERT INTO `orders` (`id`, `created_at`, `updated_at`, `qty`, `total`, `status`, `name`, `email`, `phone`, `address`, `note`) VALUES
+(14, '2021-01-25 00:26:04', '2021-01-25 00:26:04', 3, '11.00', 0, 'Андрей', '1@1.com', '111', 'Харьков', 'test'),
+(15, '2021-01-25 00:27:11', '2021-01-25 00:27:11', 3, '11.00', 0, 'Андрей', '1@1.com', '111', 'Харьков', 'test'),
+(16, '2021-01-25 00:29:01', '2021-01-25 00:29:01', 3, '11.00', 0, 'Андрей', '1@1.com', '111', 'Харьков', 'test'),
+(17, '2021-01-25 00:30:44', '2021-01-25 00:30:44', 3, '11.00', 0, 'Андрей', '1@1.com', '111', 'Харьков', 'test'),
+(18, '2021-01-25 00:32:30', '2021-01-25 00:32:30', 5, '18.00', 0, 'Trump', '1@1.com', '222', 'Харьков', 'trump'),
+(40, '2021-01-26 14:42:58', '2021-01-26 14:42:58', 3, '11.00', 0, 'Putin', '1@1.com', '111', 'Харьков', '');
+
 -- --------------------------------------------------------
 
 --
@@ -92,6 +104,32 @@ CREATE TABLE `order_product` (
   `qty` tinyint(4) NOT NULL,
   `total` decimal(6,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `order_product`
+--
+
+INSERT INTO `order_product` (`id`, `order_id`, `product_id`, `title`, `price`, `qty`, `total`) VALUES
+(27, 14, 1, 'knorr instant soup (100 gm)', '3.00', 1, '3.00'),
+(28, 14, 2, 'chings noodles (75 gm)', '5.00', 1, '5.00'),
+(29, 14, 3, 'lahsun sev (150 gm)', '3.00', 1, '3.00'),
+(30, 15, 1, 'knorr instant soup (100 gm)', '3.00', 1, '3.00'),
+(31, 15, 2, 'chings noodles (75 gm)', '5.00', 1, '5.00'),
+(32, 15, 3, 'lahsun sev (150 gm)', '3.00', 1, '3.00'),
+(33, 16, 1, 'knorr instant soup (100 gm)', '3.00', 1, '3.00'),
+(34, 16, 2, 'chings noodles (75 gm)', '5.00', 1, '5.00'),
+(35, 16, 3, 'lahsun sev (150 gm)', '3.00', 1, '3.00'),
+(36, 17, 1, 'knorr instant soup (100 gm)', '3.00', 1, '3.00'),
+(37, 17, 2, 'chings noodles (75 gm)', '5.00', 1, '5.00'),
+(38, 17, 3, 'lahsun sev (150 gm)', '3.00', 1, '3.00'),
+(39, 18, 1, 'knorr instant soup (100 gm)', '3.00', 1, '3.00'),
+(40, 18, 2, 'chings noodles (75 gm)', '5.00', 1, '5.00'),
+(41, 18, 3, 'lahsun sev (150 gm)', '3.00', 1, '3.00'),
+(42, 18, 4, 'premium bake rusk (300 gm)', '5.00', 1, '5.00'),
+(43, 18, 5, 'fresh spinach (palak)', '2.00', 1, '2.00'),
+(74, 40, 1, 'knorr instant soup (100 gm)', '3.00', 1, '3.00'),
+(75, 40, 5, 'fresh spinach (palak)', '2.00', 1, '2.00'),
+(76, 40, 7, 'fresh apple red (1 kg)', '6.00', 1, '6.00');
 
 -- --------------------------------------------------------
 
@@ -130,6 +168,19 @@ INSERT INTO `product` (`id`, `category_id`, `title`, `content`, `price`, `old_pr
 (11, 9, 'coco cola zero can (330 ml)', 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', '3.00', '0.00', NULL, NULL, '15.png', 0),
 (12, 9, 'sprite bottle (2 ltr)', 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', '3.00', '0.00', NULL, NULL, '16.png', 1);
 
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `auth_key` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Индексы сохранённых таблиц
 --
@@ -159,6 +210,12 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
@@ -172,19 +229,25 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT для таблицы `order_product`
 --
 ALTER TABLE `order_product`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT для таблицы `product`
 --
 ALTER TABLE `product`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT для таблицы `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
