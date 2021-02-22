@@ -17,8 +17,10 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'modules' => [
-        'admin' => [
+        'admin' => [            
             'class' => 'app\modules\admin\Module',
+            'layout' => 'admin',
+            'defaultRoute' => 'main/index',
         ],
     ],
     'components' => [

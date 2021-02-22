@@ -38,6 +38,9 @@ composer.lock
 # index.sublime-workspace
 index.sublime-workspace
 
+web/adminlte/*
+!web/adminlte/starter.html
+
 web/css/*
 !web/css/site.css
 !web/css/main.css
@@ -51,5 +54,6 @@ web/js/*
 # !web/js/jquery.accordion.js
 # !web/js/jquery.cookie.js
 !web/js/main.js
+!web/js/admin.js
 
 web/products/*
