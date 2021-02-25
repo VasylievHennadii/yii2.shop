@@ -292,7 +292,7 @@ desired effect
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
-        
+        <?php debug(Yii::$app->user->identity) ?>
         <?= $content; ?>
 
     </section>
