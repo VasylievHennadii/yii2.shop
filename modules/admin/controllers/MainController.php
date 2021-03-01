@@ -2,6 +2,10 @@
 
 namespace app\modules\admin\controllers;
 
+use app\modules\admin\models\Order;
+use app\modules\admin\models\Product;
+use app\modules\admin\models\Category;
+
 /**
  * Description of MainController
  *
@@ -10,11 +14,10 @@ namespace app\modules\admin\controllers;
 class MainController extends AppAdminController {
     
     public function actionIndex(){
-        return $this->render('index');
-    }
-    
-    public function actionTest(){
-        return $this->render('test');
-    }
+        $orders = Order::find()->count();
+        $products = Product::find()->count();
+        $categories = Category::find()->count();
+        return $this->render('index', compact('orders', 'products', 'categories'));
+    }    
     
 }
