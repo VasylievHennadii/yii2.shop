@@ -24,6 +24,12 @@ $config = [
         ],
     ],
     'components' => [
+        'formatter' => [
+            'datetimeFormat' => 'php:d F Y H:i:s',
+//            'decimalSeparator' => ',',
+//            'thousandSeparator' => ' ',
+//            'currencyCode' => 'EUR',
+       ],
         /*настройка комплекта ресурсов*/
         'assetManager' => [
             'bundles' => [

@@ -36,7 +36,16 @@ class OrderController extends AppAdminController
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Order::find(),
+            'query' => Order::find(),            
+//            'pagination' => [
+//                'pageSize' => 2,
+//            ],
+            'sort' => [
+                'defaultOrder' => [
+//                    'id' => SORT_DESC,
+                    'status' => SORT_ASC,
+                ]
+            ]
         ]);
 
         return $this->render('index', [
