@@ -33,6 +33,14 @@ class Order extends ActiveRecord
     }
     
     /**
+     * связываем модели админки Order и OrderProduct 
+     */
+    public function getOrderProduct()
+    {
+        return $this->hasMany(OrderProduct::class, ['order_id' => 'id']);
+    }
+
+    /**
      * метод позволяет автоматически обновлять атрибуты с метками времени 'created_at', 'updated_at'
      * 
      * @return type
@@ -79,7 +87,7 @@ class Order extends ActiveRecord
             'qty' => 'Кол-во',
             'total' => 'Сумма',
             'status' => 'Статус',
-            'name' => 'имя',
+            'name' => 'Имя',
             'email' => 'E-mail',
             'phone' => 'Телефон',
             'address' => 'Адрес',

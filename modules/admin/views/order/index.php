@@ -41,7 +41,15 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                             'qty',
                             'total',
-                            'status',
+//                            'status',
+                            [
+                                'attribute' => 'status',
+                                'value' => function($data){
+                                    return $data->status ? '<span class="text-green">Завершен</span>' : '<span class="text-red">Новый</span>' ;
+                                },
+//                                'format' => 'html',
+                                'format' => 'raw',
+                            ],
                             //'name',
                             //'email:email',
                             //'phone',
