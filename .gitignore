@@ -55,5 +55,6 @@ web/js/*
 # !web/js/jquery.cookie.js
 !web/js/main.js
 !web/js/admin.js
+!web/js/auth.js
 
 web/products/*

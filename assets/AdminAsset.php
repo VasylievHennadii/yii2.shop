@@ -25,6 +25,7 @@ class AdminAsset extends AssetBundle {
     public $js = [
         'adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js',
         'adminlte/dist/js/adminlte.min.js',
+        'js/admin.js',
     ];
     
     public $depends = [

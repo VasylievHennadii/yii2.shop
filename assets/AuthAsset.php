@@ -25,7 +25,7 @@ class AuthAsset extends AssetBundle {
     public $js = [        
         'adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js',
         'adminlte/plugins/iCheck/icheck.min.js',
-        'js/admin.js',
+        'js/auth.js',
     ];
     
     public $depends = [
