@@ -4,6 +4,7 @@ namespace app\modules\admin\controllers;
 
 use Yii;
 use app\modules\admin\models\Order;
+use app\modules\admin\models\OrderProduct;
 use yii\data\ActiveDataProvider;
 use app\modules\admin\controllers\AppAdminController;
 use yii\web\NotFoundHttpException;
@@ -114,7 +115,10 @@ class OrderController extends AppAdminController
      */
     public function actionDelete($id)
     {
+        //$this->findModel($id)->unlink('orderProduct', true);
         $this->findModel($id)->delete();
+        OrderProduct::deleteAll(['order_id' => $id]);
+        Yii::$app->session->setFlash('success', 'Заказ удален');
 
         return $this->redirect(['index']);
     }

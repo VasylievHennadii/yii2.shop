@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 25 2021 г., 22:37
+-- Время создания: Мар 14 2021 г., 01:03
 -- Версия сервера: 10.3.13-MariaDB-log
 -- Версия PHP: 7.1.32
 
@@ -82,12 +82,13 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `created_at`, `updated_at`, `qty`, `total`, `status`, `name`, `email`, `phone`, `address`, `note`) VALUES
-(14, '2021-01-25 00:26:04', '2021-01-25 00:26:04', 3, '11.00', 0, 'Андрей', '1@1.com', '111', 'Харьков', 'test'),
-(15, '2021-01-25 00:27:11', '2021-01-25 00:27:11', 3, '11.00', 0, 'Андрей', '1@1.com', '111', 'Харьков', 'test'),
+(14, '2021-01-25 00:26:04', '2021-03-09 14:56:02', 3, '11.00', 1, 'Андрей', '1@1.com', '111', 'Харьков', 'test'),
+(15, '2021-01-25 00:27:11', '2021-03-13 23:04:20', 3, '11.00', 1, 'Андрей', '1@1.com', '111', 'Харьков', 'Примечание клиента...\r\nПримечание менеджера!!!'),
 (16, '2021-01-25 00:29:01', '2021-01-25 00:29:01', 3, '11.00', 0, 'Андрей', '1@1.com', '111', 'Харьков', 'test'),
 (17, '2021-01-25 00:30:44', '2021-01-25 00:30:44', 3, '11.00', 0, 'Андрей', '1@1.com', '111', 'Харьков', 'test'),
 (18, '2021-01-25 00:32:30', '2021-01-25 00:32:30', 5, '18.00', 0, 'Trump', '1@1.com', '222', 'Харьков', 'trump'),
-(40, '2021-01-26 14:42:58', '2021-01-26 14:42:58', 3, '11.00', 0, 'Putin', '1@1.com', '111', 'Харьков', '');
+(40, '2021-01-26 14:42:58', '2021-01-26 14:42:58', 3, '11.00', 0, 'Putin', '1@1.com', '111', 'Харьков', ''),
+(42, '2021-03-13 23:52:02', '2021-03-13 23:52:02', 9, '26.00', 0, 'Андрей', '1@1.com', '888', 'Харьков', '456789');
 
 -- --------------------------------------------------------
 
@@ -129,7 +130,12 @@ INSERT INTO `order_product` (`id`, `order_id`, `product_id`, `title`, `price`, `
 (43, 18, 5, 'fresh spinach (palak)', '2.00', 1, '2.00'),
 (74, 40, 1, 'knorr instant soup (100 gm)', '3.00', 1, '3.00'),
 (75, 40, 5, 'fresh spinach (palak)', '2.00', 1, '2.00'),
-(76, 40, 7, 'fresh apple red (1 kg)', '6.00', 1, '6.00');
+(76, 40, 7, 'fresh apple red (1 kg)', '6.00', 1, '6.00'),
+(80, 42, 11, 'coco cola zero can (330 ml)', '3.00', 1, '3.00'),
+(81, 42, 12, 'sprite bottle (2 ltr)', '3.00', 2, '6.00'),
+(82, 42, 5, 'fresh spinach (palak)', '2.00', 1, '2.00'),
+(83, 42, 1, 'knorr instant soup (100 gm)', '3.00', 3, '9.00'),
+(84, 42, 3, 'lahsun sev (150 gm)', '3.00', 2, '6.00');
 
 -- --------------------------------------------------------
 
@@ -186,7 +192,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `auth_key`) VALUES
-(1, 'admin', '$2y$13$OUn/pj1gVe6ElV2ajJlsCeKvbkWPYXjIFMmtyd3oSaeTyU4dopXJC', 'VwyS80mfOVTSLuOjeEaQvmdbhCOJwiYG');
+(1, 'admin', '$2y$13$OUn/pj1gVe6ElV2ajJlsCeKvbkWPYXjIFMmtyd3oSaeTyU4dopXJC', '1dZ853rT6eCNnFI5kjC4Ej0QgC4p61PE');
 
 --
 -- Индексы сохранённых таблиц
@@ -236,13 +242,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT для таблицы `order_product`
 --
 ALTER TABLE `order_product`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT для таблицы `product`
