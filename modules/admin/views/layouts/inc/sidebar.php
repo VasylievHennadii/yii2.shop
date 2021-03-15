@@ -20,7 +20,8 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="<?= yii\helpers\Url::to(['main/index']) ?>"><i class="fa fa-bar-chart"></i> <span>Статистика магазина</span></a></li>        
+        <li class="active"><a href="<?= yii\helpers\Url::to(['main/index']) ?>"><i class="fa fa-bar-chart"></i> <span>Статистика магазина</span></a></li>
+        
         <li class="treeview">
           <a href="#"><i class="fa fa-shopping-cart"></i> <span>Заказы</span>
             <span class="pull-right-container">
@@ -32,6 +33,19 @@
             <li><a href="<?= yii\helpers\Url::to(['order/create']) ?>">Добавить заказ</a></li>
           </ul>
         </li>
+        
+        <li class="treeview">
+          <a href="#"><i class="fa fa-cubes"></i> <span>Категории</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+              <li><a href="<?= yii\helpers\Url::to(['category/index']) ?>">Список категорий</a></li>
+            <li><a href="<?= yii\helpers\Url::to(['category/create']) ?>">Добавить категорию</a></li>
+          </ul>
+        </li>
+        
       </ul>
       <!-- /.sidebar-menu -->
     </section>
