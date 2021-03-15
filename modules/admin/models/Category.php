@@ -22,6 +22,15 @@ class Category extends \yii\db\ActiveRecord
     {
         return 'category';
     }
+    
+    /**
+     * прописываем связь между родительской и наследственной категориями 
+     * @return type
+     */
+    public function getCategory()
+    {
+        return $this->hasOne(Category::class, ['id' => 'parent_id']);
+    }
 
     /**
      * {@inheritdoc}
