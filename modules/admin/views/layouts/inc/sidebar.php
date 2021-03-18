@@ -46,6 +46,18 @@
           </ul>
         </li>
         
+        <li class="treeview">
+          <a href="#"><i class="fa fa-cutlery"></i> <span>Товары</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+              <li><a href="<?= yii\helpers\Url::to(['product/index']) ?>">Список товаров</a></li>
+            <li><a href="<?= yii\helpers\Url::to(['product/create']) ?>">Добавить товар</a></li>
+          </ul>
+        </li>
+        
       </ul>
       <!-- /.sidebar-menu -->
     </section>

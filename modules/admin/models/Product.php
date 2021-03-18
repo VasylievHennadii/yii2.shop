@@ -3,6 +3,7 @@
 namespace app\modules\admin\models;
 
 use Yii;
+use app\modules\admin\models\Category;
 
 /**
  * This is the model class for table "product".
@@ -27,6 +28,13 @@ class Product extends \yii\db\ActiveRecord
     {
         return 'product';
     }
+    
+    /**
+     * связь с моделью категорий
+     */
+    public function getCategory(){
+        return $this->hasOne(Category::class, ['id' => 'category_id']);
+    }
 
     /**
      * {@inheritdoc}
@@ -49,15 +57,15 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'category_id' => 'Category ID',
-            'title' => 'Title',
-            'content' => 'Content',
-            'price' => 'Price',
-            'old_price' => 'Old Price',
-            'description' => 'Description',
-            'keywords' => 'Keywords',
-            'img' => 'Img',
-            'is_offer' => 'Is Offer',
+            'category_id' => 'Категория',
+            'title' => 'Наименование',
+            'content' => 'Содержание',
+            'price' => 'Цена',
+            'old_price' => 'Старая цена',
+            'description' => 'Описание',
+            'keywords' => 'Ключевые слова',
+            'img' => 'Картинка товара',
+            'is_offer' => 'Акция',
         ];
     }
 }
